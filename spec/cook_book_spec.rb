@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'timecop'
 require './lib/cook_book'
 require './lib/recipe'
 
@@ -26,6 +27,16 @@ RSpec.describe CookBook do
   describe '#new' do
     it 'creates a CookBook' do
       expect(cookbook).to be_a(described_class)
+    end
+  end
+
+  describe '#date' do
+    it 'remembers when it was created' do
+      old_cookbook = nil
+      Timecop.travel(Time.local(2020, 4, 22, 12, 0, 0)) do
+        old_cookbook = described_class.new
+      end
+      expect(old_cookbook.date).to eq("04-22-2020")
     end
   end
 

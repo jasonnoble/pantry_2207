@@ -15,7 +15,7 @@ RSpec.describe CookBook do
 
   describe '#add_recipe(recipe)' do
     it 'adds the recipe to the cookbook' do
-      expect{cookbook.add_recipe(recipe1)}.to change(cookbook.recipes, :count).from(0).to(1)
+      expect { cookbook.add_recipe(recipe1) }.to change(cookbook.recipes, :count).from(0).to(1)
     end
   end
 end

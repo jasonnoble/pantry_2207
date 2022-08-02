@@ -3,7 +3,7 @@ class Recipe
 
   def initialize(recipe_name)
     @name = recipe_name
-    @ingredients_required = Hash.new{|hash, ingredient| hash[ingredient] = 0}
+    @ingredients_required = Hash.new { |hash, ingredient| hash[ingredient] = 0 }
   end
 
   def add_ingredient(ingredient, quantity)

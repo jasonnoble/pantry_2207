@@ -45,4 +45,14 @@ RSpec.describe CookBook do
       expect(cookbook.ingredients).to eq(["Cheese", "Macaroni", "Ground Beef", "Bun"])
     end
   end
+
+  describe '#highest_calorie_meal' do
+    before do
+      cookbook.add_recipe(recipe1)
+      cookbook.add_recipe(recipe2)
+    end
+    it 'returns the recipe for the highest calorie meal' do
+      expect(cookbook.highest_calorie_meal).to eq(recipe2)
+    end
+  end
 end

@@ -14,4 +14,8 @@ class CookBook
       recipe.ingredients.map(&:name)
     end.uniq
   end
+
+  def highest_calorie_meal
+    recipes.max_by{|recipe| recipe.total_calories }
+  end
 end

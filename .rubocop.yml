@@ -30,6 +30,9 @@ Style/Documentation:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 

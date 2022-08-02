@@ -28,7 +28,7 @@ RSpec.describe Pantry do
 
   describe '#restock(ingredient1, 5)' do
     it 'changes the unit count for the ingredient' do
-      expect{ pantry.restock(ingredient1, 5) }.to change{ pantry.stock_check(ingredient1) }.from(0).to(5)
+      expect { pantry.restock(ingredient1, 5) }.to change { pantry.stock_check(ingredient1) }.from(0).to(5)
     end
   end
 end

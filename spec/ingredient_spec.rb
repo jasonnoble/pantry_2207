@@ -2,7 +2,7 @@ require 'spec_helper'
 require './lib/ingredient'
 
 RSpec.describe Ingredient do
-  let(:ingredient) { Ingredient.new({ name: "Cheese", unit: "oz", calories: 50 })}
+  let(:ingredient) { described_class.new({ name: "Cheese", unit: "oz", calories: 50 }) }
 
   describe '#new(attributes)' do
     it 'is a Ingredient' do
@@ -15,11 +15,13 @@ RSpec.describe Ingredient do
       expect(ingredient.name).to eq("Cheese")
     end
   end
+
   describe '#unit' do
     it 'provides the unit of the ingredient' do
       expect(ingredient.unit).to eq("oz")
     end
   end
+
   describe '#calories' do
     it 'provides the calories of the ingredient' do
       expect(ingredient.calories).to eq(50)

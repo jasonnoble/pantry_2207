@@ -2,7 +2,7 @@ class Pantry
   attr_reader :stock
 
   def initialize
-    @stock = Hash.new{|hash, ingredient| hash[ingredient] = 0}
+    @stock = Hash.new { |hash, ingredient| hash[ingredient] = 0 }
   end
 
   def stock_check(ingredient)

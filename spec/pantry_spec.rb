@@ -4,7 +4,14 @@ require './lib/ingredient'
 
 RSpec.describe Pantry do
   let(:pantry) { described_class.new }
-  let(:ingredient1) { Ingredient.new({ name: "Cheese", unit: "oz", calories: 50 }) }
+  let(:ingredient1) { Ingredient.new({ name: "Cheese", unit: "C", calories: 100 }) }
+  let(:ingredient2) { Ingredient.new({ name: "Macaroni", unit: "oz", calories: 30 }) }
+  let(:recipe1) {
+    recipe = Recipe.new("Mac and Cheese")
+    recipe.add_ingredient(ingredient1, 2)
+    recipe.add_ingredient(ingredient2, 8)
+    recipe
+  }
 
   describe '#new' do
     it 'is a Pantry' do
@@ -29,6 +36,21 @@ RSpec.describe Pantry do
   describe '#restock(ingredient1, 5)' do
     it 'changes the unit count for the ingredient' do
       expect { pantry.restock(ingredient1, 5) }.to change { pantry.stock_check(ingredient1) }.from(0).to(5)
+    end
+  end
+
+  describe '#enough_ingredients_for?(recipe)' do
+    it 'returns false when we need to go shopping' do
+      pantry.restock(ingredient1, 5)
+      pantry.restock(ingredient1, 10)
+      expect(pantry.enough_ingredients_for?(recipe1)).to be(false)
+    end
+
+    it 'returns true when we have all the required ingredients' do
+      pantry.restock(ingredient1, 5)
+      pantry.restock(ingredient1, 10)
+      pantry.restock(ingredient2, 8)
+      expect(pantry.enough_ingredients_for?(recipe1)).to be(true)
     end
   end
 end
